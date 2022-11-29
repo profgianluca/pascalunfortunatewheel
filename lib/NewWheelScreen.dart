@@ -8,9 +8,12 @@ class NewWheelScreen extends StatefulWidget {
 }
 
 class _NewWheelScreenState extends State<NewWheelScreen> {
-  String? nome;
+  late String nome;
+  List<String> listastudenti = <String>[];
   void inserisci(BuildContext context) {
-    setState(() {});
+    setState(() {
+      listastudenti.add(nome);
+    });
   }
 
   @override
@@ -33,7 +36,14 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
               },
             ),
             ElevatedButton(
-                onPressed: () => inserisci(context), child: Text('boh'))
+                onPressed: () => inserisci(context), child: Text('boh')),
+            Expanded(
+              child: ListView.builder(
+                  itemCount: listastudenti.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ListTile(title: Text('${listastudenti[index]}'));
+                  }),
+            ),
           ],
         ),
       ),
