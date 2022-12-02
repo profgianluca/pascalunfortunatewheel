@@ -21,9 +21,7 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
   Future<void> caricaStringa() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      if (prefs.getStringList('lista0') != null) {
-        listastudenti = prefs.getStringList('lista0')!;
-      }
+      listastudenti = prefs.getStringList('lista0') ?? <String>[];
     });
   }
 
