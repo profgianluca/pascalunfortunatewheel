@@ -12,18 +12,30 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
   TextEditingController controllerNome = TextEditingController();
   late String nome;
   List<String> listastudenti = <String>[];
+  int progressivoRuote = 0;
 
   Future<void> salvaStringa() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setStringList('lista0', listastudenti);
+    await prefs.setStringList('lista$progressivoRuote', listastudenti);
+  }
+
+  Future<void> salvaProgressivoRuote() async {
+    final prefs = await SharedPreferences.getInstance();
+    progressivoRuote++;
+    await prefs.setInt('progressivoRuote', progressivoRuote);
   }
 
   Future<void> caricaStringa() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      if (prefs.getStringList('lista0') != null) {
-        listastudenti = prefs.getStringList('lista0')!;
-      }
+      listastudenti = prefs.getStringList('lista0') ?? [];
+    });
+  }
+
+  Future<void> caricaProgressivoRuote() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      progressivoRuote = prefs.getInt('progressivoRuote') ?? 0;
     });
   }
 
@@ -44,6 +56,7 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
   @override
   void initState() {
     caricaStringa();
+    caricaProgressivoRuote();
     super.initState();
   }
 
@@ -94,6 +107,12 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
                     }),
               ),
             ),
+            ElevatedButton(
+                onPressed: () {
+                  salvaProgressivoRuote();
+                  Navigator.pushNamed(context, '/WheelScreen');
+                },
+                child: Text('Vai alla Ruota'))
           ],
         ),
       ),

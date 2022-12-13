@@ -1,7 +1,6 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'NewWheelScreen.dart';
+import 'WheelScreen.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -10,6 +9,7 @@ void main() {
     routes: {
       '/': (context) => const HomePage(),
       '/NewWheelScreen': (context) => const NewWheelScreen(),
+      '/WheelScreen': (context) => const Wheel(),
     },
   ));
 }
