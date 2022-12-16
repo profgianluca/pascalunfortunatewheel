@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'NewWheelScreen.dart';
 import 'WheelScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -22,10 +23,36 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<String> listastudenti = <String>[];
+  int progressivoRuote = 0;
+
   void newWheel(BuildContext context) {
     setState(() {
       Navigator.pushNamed(context, '/NewWheelScreen');
     });
+  }
+
+  Future<void> caricaStringa() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      listastudenti = prefs.getStringList('lista$progressivoRuote') ?? [];
+      print(listastudenti.length);
+    });
+  }
+
+  Future<void> caricaProgressivoRuote() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      progressivoRuote = prefs.getInt('progressivoRuote') ?? 0;
+      progressivoRuote = progressivoRuote - 1;
+    });
+  }
+
+  @override
+  void initState() {
+    caricaProgressivoRuote();
+    caricaStringa();
+    super.initState();
   }
 
   @override
