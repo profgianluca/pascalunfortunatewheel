@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'NewWheelScreen.dart';
 import 'WheelScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'TrasferimentiParametri.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -23,8 +24,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> listastudenti = <String>[];
-  int progressivoRuote = 0;
+  List<String> listaRuote = [];
 
   void newWheel(BuildContext context) {
     setState(() {
@@ -32,26 +32,17 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  Future<void> caricaStringa() async {
+  Future<void> caricaListaRuote() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      listastudenti = prefs.getStringList('lista$progressivoRuote') ?? [];
-      print(listastudenti.length);
-    });
-  }
-
-  Future<void> caricaProgressivoRuote() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      progressivoRuote = prefs.getInt('progressivoRuote') ?? 0;
-      progressivoRuote = progressivoRuote - 1;
+      listaRuote = prefs.getStringList('listaruote') ??
+          ["", "", "", "", "", "", "", "", "", ""];
     });
   }
 
   @override
   void initState() {
-    caricaProgressivoRuote();
-    caricaStringa();
+    caricaListaRuote();
     super.initState();
   }
 
@@ -69,18 +60,24 @@ class _HomePageState extends State<HomePage> {
               size: 20,
             ),
             Expanded(
-              child: ListView(
-                scrollDirection: Axis.vertical,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: ElevatedButton(
-                        onPressed: () => newWheel(context),
-                        child: Text('Crea una nuova Ruota')),
-                  )
-                ],
-              ),
-            ),
+              child: ListView.builder(
+                  itemCount: listaRuote.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          Navigator.pushNamed(context, '/NewWheelScreen',
+                              arguments: TrasferimentiParametri(
+                                  index, listaRuote[index]));
+                        });
+                      },
+                      child: ListTile(
+                        title: Text(listaRuote[index]),
+                        trailing: Icon(Icons.more_vert),
+                      ),
+                    );
+                  }),
+            )
           ],
         ),
       ),

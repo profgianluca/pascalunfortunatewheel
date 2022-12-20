@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'TrasferimentiParametri.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
@@ -13,7 +13,7 @@ class Wheel extends StatefulWidget {
 
 class _WheelState extends State<Wheel> {
   List<String> listastudenti = <String>[];
-  int progressivoRuote = 0;
+  late int progressivoRuote;
   StreamController<int> controller = StreamController<int>();
 
   Future<void> caricaStringa() async {
@@ -24,26 +24,20 @@ class _WheelState extends State<Wheel> {
     });
   }
 
-  Future<void> caricaProgressivoRuote() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      progressivoRuote = prefs.getInt('progressivoRuote') ?? 0;
-      progressivoRuote = progressivoRuote - 1;
-    });
-  }
-
   @override
   void initState() {
-    caricaProgressivoRuote();
-    caricaStringa();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as TrasferimentiParametri;
+    progressivoRuote = args.indice;
+    caricaStringa();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ruota Numero $progressivoRuote'),
+        title: Text('Ruota Numero ${progressivoRuote + 1}'),
       ),
       body: Center(
         child: GestureDetector(
