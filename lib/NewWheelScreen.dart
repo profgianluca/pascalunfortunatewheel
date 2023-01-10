@@ -11,9 +11,13 @@ class NewWheelScreen extends StatefulWidget {
 
 class _NewWheelScreenState extends State<NewWheelScreen> {
   TextEditingController controllerNome = TextEditingController();
-  late String nome;
+  TextEditingController controllerNomeRuota = TextEditingController();
+
+  String nome = "";
+  late String nomeruota;
   List<String> listastudenti = <String>[];
   late int progressivoRuote;
+  List<String> listaRuote = <String>[];
 
   Future<void> salvaStringa() async {
     final prefs = await SharedPreferences.getInstance();
@@ -25,6 +29,17 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
     setState(() {
       listastudenti = prefs.getStringList('lista$progressivoRuote') ?? [];
     });
+  }
+
+  Future<void> caricaListaRuote() async {
+    final prefs = await SharedPreferences.getInstance();
+    listaRuote = prefs.getStringList('listaruote') ??
+        ["", "", "", "", "", "", "", "", "", ""];
+  }
+
+  Future<void> salvaListaRuote() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList('listaruote', listaRuote);
   }
 
   void inserisci(BuildContext context) {
@@ -44,6 +59,7 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
   @override
   void initState() {
     super.initState();
+    caricaListaRuote();
   }
 
   @override
@@ -52,14 +68,32 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
         ModalRoute.of(context)!.settings.arguments as TrasferimentiParametri;
     //print(args.indice);
     progressivoRuote = args.indice;
+    nomeruota = args.nome;
     caricaStringa();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Inizializza Ruota ${args.nome}'),
+        title: Text('Inizializza Ruota $nomeruota'),
       ),
       body: Center(
         child: Column(
           children: [
+            TextField(
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'inserisci il nome della ruota'),
+              controller: controllerNomeRuota,
+              onChanged: (text) {
+                setState(() {
+                  nomeruota = text;
+                  listaRuote[progressivoRuote] = nomeruota;
+                });
+              },
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  salvaListaRuote();
+                },
+                child: Text('Salva il nome')),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
@@ -102,9 +136,9 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
                 onPressed: () {
                   Navigator.pushNamed(context, '/WheelScreen',
                       arguments:
-                          TrasferimentiParametri(args.indice, args.nome));
+                          TrasferimentiParametri(args.indice, nomeruota));
                 },
-                child: Text('Vai alla Ruota'))
+                child: Text('Vai alla Ruota')),
           ],
         ),
       ),

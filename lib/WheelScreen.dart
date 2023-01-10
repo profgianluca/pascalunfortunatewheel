@@ -14,6 +14,7 @@ class Wheel extends StatefulWidget {
 class _WheelState extends State<Wheel> {
   List<String> listastudenti = <String>[];
   late int progressivoRuote;
+  late String nomeRuota;
   StreamController<int> controller = StreamController<int>();
 
   Future<void> caricaStringa() async {
@@ -34,10 +35,11 @@ class _WheelState extends State<Wheel> {
     final args =
         ModalRoute.of(context)!.settings.arguments as TrasferimentiParametri;
     progressivoRuote = args.indice;
+    nomeRuota = args.nome;
     caricaStringa();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ruota Numero ${progressivoRuote + 1}'),
+        title: Text(nomeRuota),
       ),
       body: Center(
         child: GestureDetector(

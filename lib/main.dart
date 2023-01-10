@@ -67,8 +67,13 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         setState(() {
                           Navigator.pushNamed(context, '/NewWheelScreen',
-                              arguments: TrasferimentiParametri(
-                                  index, listaRuote[index]));
+                                  arguments: TrasferimentiParametri(
+                                      index, listaRuote[index]))
+                              .then((_) {
+                            setState(() {
+                              caricaListaRuote();
+                            });
+                          });
                         });
                       },
                       child: ListTile(
