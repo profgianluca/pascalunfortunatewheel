@@ -14,7 +14,7 @@ class Wheel extends StatefulWidget {
 class _WheelState extends State<Wheel> {
   List<String> listastudenti = <String>[];
   late int progressivoRuote;
-  late String nomeRuota;
+  String nomeRuota = "";
   StreamController<int> controller = StreamController<int>();
 
   Future<void> caricaStringa() async {

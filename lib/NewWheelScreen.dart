@@ -14,7 +14,7 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
   TextEditingController controllerNomeRuota = TextEditingController();
 
   String nome = "";
-  late String nomeruota;
+  String nomeruota = "";
   List<String> listastudenti = <String>[];
   late int progressivoRuote;
   List<String> listaRuote = <String>[];
@@ -68,30 +68,33 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
         ModalRoute.of(context)!.settings.arguments as TrasferimentiParametri;
     //print(args.indice);
     progressivoRuote = args.indice;
-    nomeruota = args.nome;
+    if (nomeruota == "") {
+      nomeruota = args.nome;
+    }
     caricaStringa();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Inizializza Ruota $nomeruota'),
+        title: Text('Inizializza Ruota ' + nomeruota),
       ),
       body: Center(
         child: Column(
           children: [
-            TextField(
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'inserisci il nome della ruota'),
-              controller: controllerNomeRuota,
-              onChanged: (text) {
-                setState(() {
-                  nomeruota = text;
-                  listaRuote[progressivoRuote] = nomeruota;
-                });
-              },
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'inserisci il nome della ruota'),
+                controller: controllerNomeRuota,
+              ),
             ),
             ElevatedButton(
                 onPressed: () {
-                  salvaListaRuote();
+                  setState(() {
+                    nomeruota = controllerNomeRuota.text;
+                    listaRuote[progressivoRuote] = nomeruota;
+                    salvaListaRuote();
+                  });
                 },
                 child: Text('Salva il nome')),
             Padding(
