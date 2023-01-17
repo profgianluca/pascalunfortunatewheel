@@ -55,33 +55,46 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: Column(
           children: [
-            Icon(
-              Icons.access_time_filled,
-              size: 20,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.access_time_filled,
+                size: 50,
+              ),
             ),
             Expanded(
-              child: ListView.builder(
-                  itemCount: listaRuote.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          Navigator.pushNamed(context, '/NewWheelScreen',
-                                  arguments: TrasferimentiParametri(
-                                      index, listaRuote[index]))
-                              .then((_) {
-                            setState(() {
-                              caricaListaRuote();
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(50.0, 8.0, 50.0, 8.0),
+                child: ListView.builder(
+                    itemCount: listaRuote.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            Navigator.pushNamed(context, '/NewWheelScreen',
+                                    arguments: TrasferimentiParametri(
+                                        index, listaRuote[index]))
+                                .then((_) {
+                              setState(() {
+                                caricaListaRuote();
+                              });
                             });
                           });
-                        });
-                      },
-                      child: ListTile(
-                        title: Text(listaRuote[index]),
-                        trailing: Icon(Icons.more_vert),
-                      ),
-                    );
-                  }),
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(3.0),
+                          child: Container(
+                            color: Colors.lightBlue[500],
+                            child: ListTile(
+                              title: Center(child: Text(listaRuote[index])),
+
+                              //trailing: Icon(Icons.more_vert),
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+              ),
             )
           ],
         ),

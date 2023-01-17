@@ -16,6 +16,7 @@ class _WheelState extends State<Wheel> {
   late int progressivoRuote;
   String nomeRuota = "";
   StreamController<int> controller = StreamController<int>();
+  bool animateFirst = true;
 
   Future<void> caricaStringa() async {
     final prefs = await SharedPreferences.getInstance();
@@ -37,6 +38,10 @@ class _WheelState extends State<Wheel> {
     progressivoRuote = args.indice;
     nomeRuota = args.nome;
     caricaStringa();
+    if (listastudenti.length != 0 && animateFirst) {
+      controller.add(Fortune.randomInt(0, listastudenti.length));
+      animateFirst = false;
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text(nomeRuota),
@@ -51,6 +56,9 @@ class _WheelState extends State<Wheel> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: FortuneWheel(
+              onFling: () {
+                controller.add(Fortune.randomInt(0, listastudenti.length));
+              },
               selected: controller.stream,
               items: [
                 for (var it in listastudenti) FortuneItem(child: Text(it)),

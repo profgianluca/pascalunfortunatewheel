@@ -135,13 +135,23 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
                     }),
               ),
             ),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/WheelScreen',
-                      arguments:
-                          TrasferimentiParametri(args.indice, nomeruota));
-                },
-                child: Text('Vai alla Ruota')),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                  onPressed: () {
+                    if (listastudenti.length < 2) {
+                      const snackBar = SnackBar(
+                          content: Text(
+                              "Inserisci almeno due elementi per eseguire la ruota"));
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    } else {
+                      Navigator.pushNamed(context, '/WheelScreen',
+                          arguments:
+                              TrasferimentiParametri(args.indice, nomeruota));
+                    }
+                  },
+                  child: Text('Vai alla Ruota')),
+            ),
           ],
         ),
       ),
