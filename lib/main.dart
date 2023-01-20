@@ -6,6 +6,23 @@ import 'TrasferimentiParametri.dart';
 
 void main() {
   runApp(MaterialApp(
+    theme: ThemeData(
+      // Define the default brightness and colors.
+      brightness: Brightness.light,
+      primaryColor: Colors.indigo,
+
+      colorScheme: ColorScheme.fromSwatch().copyWith(primary: Colors.indigo),
+      // Define the default font family.
+      fontFamily: 'Bold',
+
+      // Define the default `TextTheme`. Use this to specify the default
+      // text styling for headlines, titles, bodies of text, and more.
+      textTheme: const TextTheme(
+        headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+        headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+        bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+      ),
+    ),
     title: 'Pascal Unfortunate Wheel',
     initialRoute: '/',
     routes: {
@@ -49,6 +66,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: Colors.indigo[100],
       appBar: AppBar(
         title: Text('Pascal Unfortunate Wheel'),
       ),
@@ -64,7 +82,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(50.0, 8.0, 50.0, 8.0),
+                padding: const EdgeInsets.fromLTRB(70.0, 8.0, 70.0, 8.0),
                 child: ListView.builder(
                     itemCount: listaRuote.length,
                     itemBuilder: (BuildContext context, int index) {
@@ -84,9 +102,19 @@ class _HomePageState extends State<HomePage> {
                         child: Padding(
                           padding: const EdgeInsets.all(3.0),
                           child: Container(
-                            color: Colors.lightBlue[500],
+                            //color: Colors.red[500],
                             child: ListTile(
-                              title: Center(child: Text(listaRuote[index])),
+                              tileColor: Colors.blueGrey[100],
+                              shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                      color: Colors.indigo, width: 5),
+                                  borderRadius: BorderRadius.circular(10)),
+                              title: Center(
+                                  child: Text(
+                                listaRuote[index],
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              )),
 
                               //trailing: Icon(Icons.more_vert),
                             ),
