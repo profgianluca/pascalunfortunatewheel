@@ -18,8 +18,8 @@ void main() {
       // Define the default `TextTheme`. Use this to specify the default
       // text styling for headlines, titles, bodies of text, and more.
       textTheme: const TextTheme(
-        headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-        headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+        //headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+        //headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
         bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
       ),
     ),
@@ -75,9 +75,9 @@ class _HomePageState extends State<HomePage> {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Icon(
-                Icons.access_time_filled,
-                size: 50,
+              child: Image(
+                image: AssetImage('images/pascal.png'),
+                height: 100,
               ),
             ),
             Expanded(
@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
                           child: Container(
                             //color: Colors.red[500],
                             child: ListTile(
-                              tileColor: Colors.blueGrey[100],
+                              //tileColor: Colors.blueGrey[100],
                               shape: RoundedRectangleBorder(
                                   side: BorderSide(
                                       color: Colors.indigo, width: 5),

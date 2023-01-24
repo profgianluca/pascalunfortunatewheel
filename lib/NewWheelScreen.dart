@@ -44,8 +44,11 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
 
   void inserisci(BuildContext context) {
     setState(() {
-      listastudenti.add(nome);
-      salvaStringa();
+      if (nome != "") {
+        listastudenti.add(nome);
+        salvaStringa();
+        nome = "";
+      }
     });
   }
 
@@ -70,6 +73,7 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
     progressivoRuote = args.indice;
     if (nomeruota == "") {
       nomeruota = args.nome;
+      controllerNomeRuota.text = nomeruota;
     }
     caricaStringa();
     return Scaffold(
@@ -82,6 +86,7 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
+                style: TextStyle(fontWeight: FontWeight.normal, fontSize: 18),
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'inserisci il nome della ruota'),
@@ -118,7 +123,7 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
                     inserisci(context);
                     controllerNome.clear();
                   },
-                  child: Text('INSERISCI')),
+                  child: Text('Inserisci')),
             ),
             Expanded(
               child: Padding(
@@ -126,12 +131,23 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
                 child: ListView.builder(
                     itemCount: listastudenti.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return ListTile(
-                          title: Text('${listastudenti[index]}'),
-                          trailing: IconButton(
-                            onPressed: () => cancella(index),
-                            icon: Icon(Icons.delete),
-                          ));
+                      return Padding(
+                        padding: const EdgeInsets.all(3.0),
+                        child: ListTile(
+                            shape: RoundedRectangleBorder(
+                                side:
+                                    BorderSide(color: Colors.indigo, width: 3),
+                                borderRadius: BorderRadius.circular(10)),
+                            title: Text(
+                              '${listastudenti[index]}',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.normal, fontSize: 18),
+                            ),
+                            trailing: IconButton(
+                              onPressed: () => cancella(index),
+                              icon: Icon(Icons.delete),
+                            )),
+                      );
                     }),
               ),
             ),

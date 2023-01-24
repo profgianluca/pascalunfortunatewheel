@@ -17,6 +17,9 @@ class _WheelState extends State<Wheel> {
   String nomeRuota = "";
   StreamController<int> controller = StreamController<int>();
   bool animateFirst = true;
+  void fineAnimazione() {
+    print('fine');
+  }
 
   Future<void> caricaStringa() async {
     final prefs = await SharedPreferences.getInstance();
@@ -59,6 +62,7 @@ class _WheelState extends State<Wheel> {
               onFling: () {
                 controller.add(Fortune.randomInt(0, listastudenti.length));
               },
+              onAnimationEnd: () => fineAnimazione(),
               selected: controller.stream,
               items: [
                 for (var it in listastudenti) FortuneItem(child: Text(it)),
