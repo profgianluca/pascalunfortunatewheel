@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: Column(
           children: [
-            Padding(
+            Container(
               padding: const EdgeInsets.all(8.0),
               child: Image(
                 image: AssetImage('images/pascal.png'),
@@ -102,13 +102,20 @@ class _HomePageState extends State<HomePage> {
                         child: Padding(
                           padding: const EdgeInsets.all(3.0),
                           child: Container(
-                            //color: Colors.red[500],
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                //color: Colors.indigo,
+                                border: Border(
+                                  top: BorderSide(
+                                      color: Colors.indigo, width: 5.0),
+                                  left: BorderSide(
+                                      color: Colors.indigo, width: 5.0),
+                                  right: BorderSide(
+                                      color: Colors.indigo, width: 5.0),
+                                  bottom: BorderSide(
+                                      color: Colors.indigo, width: 5.0),
+                                )),
                             child: ListTile(
-                              //tileColor: Colors.blueGrey[100],
-                              shape: RoundedRectangleBorder(
-                                  side: BorderSide(
-                                      color: Colors.indigo, width: 5),
-                                  borderRadius: BorderRadius.circular(10)),
                               title: Center(
                                   child: Text(
                                 listaRuote[index],

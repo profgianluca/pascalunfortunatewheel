@@ -34,6 +34,27 @@ class _WheelState extends State<Wheel> {
     super.initState();
   }
 
+  // Future<void> _mostraDialogo(BuildContext contex) async {
+  //   return showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return Expanded(
+  //         child: AlertDialog(
+  //           title: Text('Welcome'),
+  //           content: Text('GeeksforGeeks'),
+  //           actions: [
+  //             FlatButton(
+  //               textColor: Colors.black,
+  //               onPressed: () {},
+  //               child: Text('ACCEPT'),
+  //             ),
+  //           ],
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
+
   @override
   Widget build(BuildContext context) {
     final args =

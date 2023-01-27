@@ -71,7 +71,7 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
         ModalRoute.of(context)!.settings.arguments as TrasferimentiParametri;
     //print(args.indice);
     progressivoRuote = args.indice;
-    if (nomeruota == "") {
+    if (nomeruota == "" && args.nome != "") {
       nomeruota = args.nome;
       controllerNomeRuota.text = nomeruota;
     }
@@ -131,13 +131,21 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
                 child: ListView.builder(
                     itemCount: listastudenti.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(3.0),
+                      return Container(
+                        margin: const EdgeInsets.all(3.0),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            //color: Colors.indigo,
+                            border: Border(
+                              top: BorderSide(color: Colors.indigo, width: 5.0),
+                              left:
+                                  BorderSide(color: Colors.indigo, width: 5.0),
+                              right:
+                                  BorderSide(color: Colors.indigo, width: 5.0),
+                              bottom:
+                                  BorderSide(color: Colors.indigo, width: 5.0),
+                            )),
                         child: ListTile(
-                            shape: RoundedRectangleBorder(
-                                side:
-                                    BorderSide(color: Colors.indigo, width: 3),
-                                borderRadius: BorderRadius.circular(10)),
                             title: Text(
                               '${listastudenti[index]}',
                               style: TextStyle(
