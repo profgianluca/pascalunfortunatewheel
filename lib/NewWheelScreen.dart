@@ -99,6 +99,87 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
                     nomeruota = controllerNomeRuota.text;
                     listaRuote[progressivoRuote] = nomeruota;
                     salvaListaRuote();
+                    switch (nomeruota) {
+                      case '#pascal1a#':
+                        listastudenti = [
+                          'Alessandro A.',
+                          'Mateos',
+                          'Luigi',
+                          'Matteo',
+                          'Paolo',
+                          'Alessandro C.',
+                          'Francesco',
+                          'Michele',
+                          'Samuele',
+                          'Alessandro D.',
+                          'Simone',
+                          'Elisa',
+                          'Nausicaa',
+                          'Giovanni',
+                          'Andrea',
+                          'Carlo',
+                          'Tommaso',
+                          'Alessandro P.',
+                          'Alessandro R.',
+                          'Maria',
+                          'Marco',
+                          'Edoardo',
+                          'Tommaso'
+                        ];
+                        break;
+                      case '#pascal2a#':
+                        listastudenti = [
+                          'Leonardo',
+                          'Diana',
+                          'Gabriele',
+                          'Caterina',
+                          'Emma',
+                          'Giulia',
+                          'Luca',
+                          'Alessandra',
+                          'Marta',
+                          'Maddalena',
+                          'Giulio',
+                          'Cecilia :(',
+                          'Anna',
+                          'Giovanni',
+                          'Sofia T.',
+                          'Sofia U.'
+                        ];
+                        break;
+                      case '#pascal3a#':
+                        listastudenti = [];
+                        break;
+                      case '#pascal4a#':
+                        listastudenti = [
+                          'Sofia',
+                          'Tommaso',
+                          'Giorgio',
+                          'Camilla',
+                          'Vincenzo',
+                          'Giacomo C.',
+                          'Massimo',
+                          'Francesco :)',
+                          'Elisa',
+                          'Riccardo L.',
+                          'Samuele',
+                          'Rachele',
+                          'Filippo',
+                          'Riccardo P. :)',
+                          'Edoardo',
+                          'Giacomo P.',
+                          'Carolina',
+                          'Ludovica',
+                          'Elena',
+                          'Letizia',
+                          'Adam'
+                        ];
+                        break;
+                      case '#pascal5a#':
+                        listastudenti = [];
+                        break;
+                    }
+                    salvaStringa();
                   });
                 },
                 child: Text('Salva il nome')),
@@ -149,7 +230,7 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
                             title: Text(
                               '${listastudenti[index]}',
                               style: TextStyle(
-                                  fontWeight: FontWeight.normal, fontSize: 18),
+                                  fontWeight: FontWeight.bold, fontSize: 20),
                             ),
                             trailing: IconButton(
                               onPressed: () => cancella(index),

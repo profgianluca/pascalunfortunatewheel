@@ -14,11 +14,15 @@ class Wheel extends StatefulWidget {
 class _WheelState extends State<Wheel> {
   List<String> listastudenti = <String>[];
   late int progressivoRuote;
+  late int n_estratto;
   String nomeRuota = "";
   StreamController<int> controller = StreamController<int>();
   bool animateFirst = true;
+
   void fineAnimazione() {
     print('fine');
+    print('estratto: ' + n_estratto.toString());
+    _mostraDialogo(context);
   }
 
   Future<void> caricaStringa() async {
@@ -34,26 +38,27 @@ class _WheelState extends State<Wheel> {
     super.initState();
   }
 
-  // Future<void> _mostraDialogo(BuildContext contex) async {
-  //   return showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return Expanded(
-  //         child: AlertDialog(
-  //           title: Text('Welcome'),
-  //           content: Text('GeeksforGeeks'),
-  //           actions: [
-  //             FlatButton(
-  //               textColor: Colors.black,
-  //               onPressed: () {},
-  //               child: Text('ACCEPT'),
-  //             ),
-  //           ],
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
+  Future<void> _mostraDialogo(BuildContext contex) async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Expanded(
+          child: AlertDialog(
+            title: Text('Lo sfortunato estratto è:'),
+            content: Text(listastudenti[n_estratto]),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('CHIUDI'),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +68,7 @@ class _WheelState extends State<Wheel> {
     nomeRuota = args.nome;
     caricaStringa();
     if (listastudenti.length != 0 && animateFirst) {
-      controller.add(Fortune.randomInt(0, listastudenti.length));
+      controller.add(n_estratto = Fortune.randomInt(0, listastudenti.length));
       animateFirst = false;
     }
     return Scaffold(
@@ -74,14 +79,16 @@ class _WheelState extends State<Wheel> {
         child: GestureDetector(
           onTap: () {
             setState(() {
-              controller.add(Fortune.randomInt(0, listastudenti.length));
+              controller
+                  .add(n_estratto = Fortune.randomInt(0, listastudenti.length));
             });
           },
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: FortuneWheel(
               onFling: () {
-                controller.add(Fortune.randomInt(0, listastudenti.length));
+                controller.add(
+                    n_estratto = Fortune.randomInt(0, listastudenti.length));
               },
               onAnimationEnd: () => fineAnimazione(),
               selected: controller.stream,

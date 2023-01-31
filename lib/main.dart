@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(70.0, 8.0, 70.0, 8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: ListView.builder(
                     itemCount: listaRuote.length,
                     itemBuilder: (BuildContext context, int index) {
