@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import 'TrasferimentiParametri.dart';
 
 class NewWheelScreen extends StatefulWidget {
@@ -148,7 +149,34 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
                         ];
                         break;
                       case '#pascal3a#':
-                        listastudenti = [];
+                        listastudenti = [
+                          'Matteo B.',
+                          'Sofia',
+                          'Francesca',
+                          'Linda',
+                          'Chiara',
+                          'Margherita B.',
+                          'Carolina',
+                          'Pietro C.',
+                          'Daniele',
+                          'Stefano',
+                          'Margherita E.',
+                          'Marco',
+                          'Agnese',
+                          'Matteo I.',
+                          'Francesco',
+                          'Madhuri',
+                          'Ana',
+                          'Pietro P.',
+                          'Anna',
+                          'Tommaso',
+                          'Alessia',
+                          'Andres',
+                          'Gaia',
+                          'Simone',
+                          'elisa',
+                          'Giosuè'
+                        ];
                         break;
                       case '#pascal4a#':
                         listastudenti = [
@@ -176,7 +204,27 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
                         ];
                         break;
                       case '#pascal5a#':
-                        listastudenti = [];
+                        listastudenti = [
+                          'Luca',
+                          'Chiara',
+                          'Ludovico',
+                          'Emanuele',
+                          'Agnese',
+                          'Ludovica',
+                          'Filippo',
+                          'Alberto',
+                          'Elisabetta',
+                          'Valerii',
+                          'Juan',
+                          'Pietro',
+                          'Sofia',
+                          'Federico',
+                          'Francesco',
+                          'Beatrice',
+                          'Emma',
+                          'Mattia',
+                          'Alex'
+                        ];
                         break;
                     }
                     salvaStringa();
