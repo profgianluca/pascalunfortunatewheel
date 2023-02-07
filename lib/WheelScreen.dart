@@ -84,32 +84,39 @@ class _WheelState extends State<Wheel> {
         child: GestureDetector(
           onTap: () {
             setState(() {
-              controller
-                  .add(n_estratto = Fortune.randomInt(0, listastudenti.length));
+              if (listastudenti.length != 0) {
+                controller.add(
+                    n_estratto = Fortune.randomInt(0, listastudenti.length));
+              }
             });
           },
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: FortuneWheel(
-              rotationCount: 50,
-              duration: dur,
-              indicators: <FortuneIndicator>[
-                FortuneIndicator(
-                    alignment: Alignment.topCenter,
-                    child: TriangleIndicator(
-                      color: Colors.redAccent,
-                    ))
-              ],
-              onFling: () {
-                controller.add(
-                    n_estratto = Fortune.randomInt(0, listastudenti.length));
-              },
-              onAnimationEnd: () => fineAnimazione(),
-              selected: controller.stream,
-              items: [
-                for (var it in listastudenti) FortuneItem(child: Text(it)),
-              ],
-            ),
+            child: listastudenti.length == 0
+                ? Container()
+                : FortuneWheel(
+                    rotationCount: 50,
+                    duration: dur,
+                    indicators: <FortuneIndicator>[
+                      FortuneIndicator(
+                          alignment: Alignment.topCenter,
+                          child: TriangleIndicator(
+                            color: Colors.redAccent,
+                          ))
+                    ],
+                    onFling: () {
+                      if (listastudenti.length != 0) {
+                        controller.add(n_estratto =
+                            Fortune.randomInt(0, listastudenti.length));
+                      }
+                    },
+                    onAnimationEnd: () => fineAnimazione(),
+                    selected: controller.stream,
+                    items: [
+                      for (var it in listastudenti)
+                        FortuneItem(child: Text(it)),
+                    ],
+                  ),
           ),
         ),
       ),
