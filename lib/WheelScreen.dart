@@ -1,8 +1,10 @@
 import 'dart:async';
-import 'TrasferimentiParametri.dart';
+
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'TrasferimentiParametri.dart';
 
 class Wheel extends StatefulWidget {
   const Wheel({Key? key}) : super(key: key);
@@ -18,6 +20,9 @@ class _WheelState extends State<Wheel> {
   String nomeRuota = "";
   StreamController<int> controller = StreamController<int>();
   bool animateFirst = true;
+  final dur = Duration(
+    seconds: 10,
+  );
 
   void fineAnimazione() {
     print('fine');
@@ -86,6 +91,15 @@ class _WheelState extends State<Wheel> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: FortuneWheel(
+              rotationCount: 50,
+              duration: dur,
+              indicators: <FortuneIndicator>[
+                FortuneIndicator(
+                    alignment: Alignment.topCenter,
+                    child: TriangleIndicator(
+                      color: Colors.redAccent,
+                    ))
+              ],
               onFling: () {
                 controller.add(
                     n_estratto = Fortune.randomInt(0, listastudenti.length));

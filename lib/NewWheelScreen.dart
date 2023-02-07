@@ -84,175 +84,197 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
       body: Center(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                style: TextStyle(fontWeight: FontWeight.normal, fontSize: 18),
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'inserisci il nome della ruota'),
-                controller: controllerNomeRuota,
-              ),
+            Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      style: TextStyle(
+                          fontWeight: FontWeight.normal, fontSize: 18),
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'inserisci il nome della ruota'),
+                      controller: controllerNomeRuota,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 8, 8, 8),
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: Size(100, 50),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          nomeruota = controllerNomeRuota.text;
+                          listaRuote[progressivoRuote] = nomeruota;
+                          salvaListaRuote();
+                          switch (nomeruota) {
+                            case '#pascal1a#':
+                              listastudenti = [
+                                'Alessandro A.',
+                                'Mateos',
+                                'Luigi',
+                                'Matteo',
+                                'Paolo',
+                                'Alessandro C.',
+                                'Francesco',
+                                'Michele',
+                                'Samuele',
+                                'Alessandro D.',
+                                'Simone',
+                                'Elisa',
+                                'Nausicaa',
+                                'Giovanni',
+                                'Andrea',
+                                'Carlo',
+                                'Tommaso',
+                                'Alessandro P.',
+                                'Alessandro R.',
+                                'Maria',
+                                'Marco',
+                                'Edoardo',
+                                'Tommaso'
+                              ];
+                              break;
+                            case '#pascal2a#':
+                              listastudenti = [
+                                'Leonardo',
+                                'Diana',
+                                'Gabriele',
+                                'Caterina',
+                                'Emma',
+                                'Giulia',
+                                'Luca',
+                                'Alessandra',
+                                'Marta',
+                                'Maddalena',
+                                'Giulio',
+                                'Cecilia',
+                                'Anna',
+                                'Giovanni',
+                                'Sofia T.',
+                                'Sofia U.'
+                              ];
+                              break;
+                            case '#pascal3a#':
+                              listastudenti = [
+                                'Matteo B.',
+                                'Sofia',
+                                'Francesca',
+                                'Linda',
+                                'Chiara',
+                                'Margherita B.',
+                                'Carolina',
+                                'Pietro C.',
+                                'Daniele',
+                                'Stefano',
+                                'Margherita E.',
+                                'Marco',
+                                'Agnese',
+                                'Matteo I.',
+                                'Francesco',
+                                'Madhuri',
+                                'Ana',
+                                'Pietro P.',
+                                'Anna',
+                                'Tommaso',
+                                'Alessia',
+                                'Andres',
+                                'Gaia',
+                                'Simone',
+                                'elisa',
+                                'Giosuè'
+                              ];
+                              break;
+                            case '#pascal4a#':
+                              listastudenti = [
+                                'Sofia',
+                                'Tommaso',
+                                'Giorgio',
+                                'Camilla',
+                                'Vincenzo',
+                                'Giacomo C.',
+                                'Massimo',
+                                'Francesco :)',
+                                'Elisa',
+                                'Riccardo L.',
+                                'Samuele',
+                                'Rachele',
+                                'Filippo',
+                                'Riccardo P. :)',
+                                'Edoardo',
+                                'Giacomo P.',
+                                'Carolina',
+                                'Ludovica',
+                                'Elena',
+                                'Letizia',
+                                'Adam'
+                              ];
+                              break;
+                            case '#pascal5a#':
+                              listastudenti = [
+                                'Luca',
+                                'Chiara',
+                                'Ludovico',
+                                'Emanuele',
+                                'Agnese',
+                                'Ludovica',
+                                'Filippo',
+                                'Alberto',
+                                'Elisabetta',
+                                'Valerii',
+                                'Juan',
+                                'Pietro',
+                                'Sofia',
+                                'Federico',
+                                'Francesco',
+                                'Beatrice',
+                                'Emma',
+                                'Mattia',
+                                'Alex'
+                              ];
+                              break;
+                          }
+                          salvaStringa();
+                        });
+                      },
+                      child: Text('Salva')),
+                ),
+              ],
             ),
-            ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    nomeruota = controllerNomeRuota.text;
-                    listaRuote[progressivoRuote] = nomeruota;
-                    salvaListaRuote();
-                    switch (nomeruota) {
-                      case '#pascal1a#':
-                        listastudenti = [
-                          'Alessandro A.',
-                          'Mateos',
-                          'Luigi',
-                          'Matteo',
-                          'Paolo',
-                          'Alessandro C.',
-                          'Francesco',
-                          'Michele',
-                          'Samuele',
-                          'Alessandro D.',
-                          'Simone',
-                          'Elisa',
-                          'Nausicaa',
-                          'Giovanni',
-                          'Andrea',
-                          'Carlo',
-                          'Tommaso',
-                          'Alessandro P.',
-                          'Alessandro R.',
-                          'Maria',
-                          'Marco',
-                          'Edoardo',
-                          'Tommaso'
-                        ];
-                        break;
-                      case '#pascal2a#':
-                        listastudenti = [
-                          'Leonardo',
-                          'Diana',
-                          'Gabriele',
-                          'Caterina',
-                          'Emma',
-                          'Giulia',
-                          'Luca',
-                          'Alessandra',
-                          'Marta',
-                          'Maddalena',
-                          'Giulio',
-                          'Cecilia :(',
-                          'Anna',
-                          'Giovanni',
-                          'Sofia T.',
-                          'Sofia U.'
-                        ];
-                        break;
-                      case '#pascal3a#':
-                        listastudenti = [
-                          'Matteo B.',
-                          'Sofia',
-                          'Francesca',
-                          'Linda',
-                          'Chiara',
-                          'Margherita B.',
-                          'Carolina',
-                          'Pietro C.',
-                          'Daniele',
-                          'Stefano',
-                          'Margherita E.',
-                          'Marco',
-                          'Agnese',
-                          'Matteo I.',
-                          'Francesco',
-                          'Madhuri',
-                          'Ana',
-                          'Pietro P.',
-                          'Anna',
-                          'Tommaso',
-                          'Alessia',
-                          'Andres',
-                          'Gaia',
-                          'Simone',
-                          'elisa',
-                          'Giosuè'
-                        ];
-                        break;
-                      case '#pascal4a#':
-                        listastudenti = [
-                          'Sofia',
-                          'Tommaso',
-                          'Giorgio',
-                          'Camilla',
-                          'Vincenzo',
-                          'Giacomo C.',
-                          'Massimo',
-                          'Francesco :)',
-                          'Elisa',
-                          'Riccardo L.',
-                          'Samuele',
-                          'Rachele',
-                          'Filippo',
-                          'Riccardo P. :)',
-                          'Edoardo',
-                          'Giacomo P.',
-                          'Carolina',
-                          'Ludovica',
-                          'Elena',
-                          'Letizia',
-                          'Adam'
-                        ];
-                        break;
-                      case '#pascal5a#':
-                        listastudenti = [
-                          'Luca',
-                          'Chiara',
-                          'Ludovico',
-                          'Emanuele',
-                          'Agnese',
-                          'Ludovica',
-                          'Filippo',
-                          'Alberto',
-                          'Elisabetta',
-                          'Valerii',
-                          'Juan',
-                          'Pietro',
-                          'Sofia',
-                          'Federico',
-                          'Francesco',
-                          'Beatrice',
-                          'Emma',
-                          'Mattia',
-                          'Alex'
-                        ];
-                        break;
-                    }
-                    salvaStringa();
-                  });
-                },
-                child: Text('Salva il nome')),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'inserisci il nome dell\'alunno'),
-                controller: controllerNome,
-                onChanged: (text) {
-                  setState(() {
-                    nome = text;
-                  });
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                  onPressed: () {
-                    inserisci(context);
-                    controllerNome.clear();
-                  },
-                  child: Text('Inserisci')),
+            Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'inserisci il nome dell\'alunno'),
+                      controller: controllerNome,
+                      onChanged: (text) {
+                        setState(() {
+                          nome = text;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 8, 8, 8),
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: Size(100, 50),
+                      ),
+                      onPressed: () {
+                        inserisci(context);
+                        controllerNome.clear();
+                      },
+                      child: Text('Inserisci')),
+                ),
+              ],
             ),
             Expanded(
               child: Padding(
