@@ -47,19 +47,17 @@ class _WheelState extends State<Wheel> {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
-        return Expanded(
-          child: AlertDialog(
-            title: Text('Lo sfortunato estratto è:'),
-            content: Text(listastudenti[n_estratto]),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text('CHIUDI'),
-              ),
-            ],
-          ),
+        return AlertDialog(
+          title: Text('Lo sfortunato estratto è:'),
+          content: Text(listastudenti[n_estratto]),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('CHIUDI'),
+            ),
+          ],
         );
       },
     );
@@ -90,7 +88,7 @@ class _WheelState extends State<Wheel> {
               }
             });
           },
-          child: Padding(
+          child: Container(
             padding: const EdgeInsets.all(8.0),
             child: listastudenti.length == 0
                 ? Container()
