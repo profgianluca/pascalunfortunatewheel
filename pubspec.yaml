@@ -38,10 +38,30 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_fortune_wheel: ^1.2.0
   shared_preferences: ^2.0.15
+  flutter_launcher_icons: ^0.11.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.11.0"
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "images/WheelofFortune.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "images/WheelofFortune.png"
+    background_color: "#3f51b5"
+    theme_color: "#3f51b5"
+  windows:
+    generate: true
+    image_path: "images/WheelofFortune.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: false
+    image_path: "path/to/image.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
