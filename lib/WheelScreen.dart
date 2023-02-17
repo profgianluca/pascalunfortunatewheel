@@ -17,6 +17,7 @@ class _WheelState extends State<Wheel> {
   List<String> listastudenti = <String>[];
   late int progressivoRuote;
   late int n_estratto;
+  bool ruota_gira = false;
   String nomeRuota = "";
   StreamController<int> controller = StreamController<int>();
   bool animateFirst = true;
@@ -28,6 +29,7 @@ class _WheelState extends State<Wheel> {
     print('fine');
     print('estratto: ' + n_estratto.toString());
     _mostraDialogo(context);
+    ruota_gira = false;
   }
 
   Future<void> caricaStringa() async {
@@ -70,7 +72,7 @@ class _WheelState extends State<Wheel> {
     progressivoRuote = args.indice;
     nomeRuota = args.nome;
     caricaStringa();
-    if (listastudenti.length != 0 && animateFirst) {
+    if (listastudenti.length != 0 && animateFirst && ruota_gira == false) {
       controller.add(n_estratto = Fortune.randomInt(0, listastudenti.length));
       animateFirst = false;
     }
@@ -82,7 +84,7 @@ class _WheelState extends State<Wheel> {
         child: GestureDetector(
           onTap: () {
             setState(() {
-              if (listastudenti.length != 0) {
+              if (listastudenti.length != 0 && ruota_gira == false) {
                 controller.add(
                     n_estratto = Fortune.randomInt(0, listastudenti.length));
               }
@@ -102,11 +104,16 @@ class _WheelState extends State<Wheel> {
                             color: Colors.redAccent,
                           ))
                     ],
+                    onAnimationStart: () {
+                      ruota_gira = true;
+                    },
                     onFling: () {
-                      if (listastudenti.length != 0) {
-                        controller.add(n_estratto =
-                            Fortune.randomInt(0, listastudenti.length));
-                      }
+                      setState(() {
+                        if (listastudenti.length != 0 && ruota_gira == false) {
+                          controller.add(n_estratto =
+                              Fortune.randomInt(0, listastudenti.length));
+                        }
+                      });
                     },
                     onAnimationEnd: () => fineAnimazione(),
                     selected: controller.stream,

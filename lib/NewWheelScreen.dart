@@ -115,7 +115,7 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
                               listastudenti = [
                                 'Alessandro A.',
                                 'Mateos',
-                                'Luigi',
+                                'Laurent',
                                 'Matteo',
                                 'Paolo',
                                 'Alessandro C.',
@@ -125,6 +125,7 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
                                 'Alessandro D.',
                                 'Simone',
                                 'Elisa',
+                                'Marta',
                                 'Nausicaa',
                                 'Giovanni',
                                 'Andrea',

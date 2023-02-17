@@ -119,7 +119,9 @@ class _HomePageState extends State<HomePage> {
                             child: ListTile(
                               title: Center(
                                   child: Text(
-                                listaRuote[index],
+                                listaRuote[index] == ''
+                                    ? 'Nuova Ruota'
+                                    : listaRuote[index],
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 20),
                               )),
