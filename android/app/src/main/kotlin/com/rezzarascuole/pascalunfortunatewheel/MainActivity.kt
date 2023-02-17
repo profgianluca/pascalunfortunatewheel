@@ -1,4 +1,4 @@
-package com.example.untitled2
+package com.rezzarascuole.pascalunfortunatewheel
 
 import io.flutter.embedding.android.FlutterActivity
 
