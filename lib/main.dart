@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'AboutPage.dart';
 import 'NewWheelScreen.dart';
 import 'TrasferimentiParametri.dart';
 import 'WheelScreen.dart';
@@ -30,6 +31,7 @@ void main() {
       '/': (context) => const HomePage(),
       '/NewWheelScreen': (context) => const NewWheelScreen(),
       '/WheelScreen': (context) => const Wheel(),
+      '/AboutPage': (context) => const AboutPage(),
     },
   ));
 }
@@ -70,6 +72,16 @@ class _HomePageState extends State<HomePage> {
       //backgroundColor: Colors.indigo[100],
       appBar: AppBar(
         title: Text('Pascal Unfortunate Wheel'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  '/AboutPage',
+                );
+              },
+              icon: Icon(Icons.info_outline))
+        ],
       ),
       body: Center(
         child: Column(
