@@ -13,7 +13,7 @@ class AboutPage extends StatelessWidget {
         children: [
           Center(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.fromLTRB(8.0, 20.0, 8.0, 10.0),
               child: Text(
                 'PASCAL UNFORTUNATE WHEEL',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
@@ -23,22 +23,34 @@ class AboutPage extends StatelessWidget {
           Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('Versione 1.0.0 (anno 2023)'),
+              child: Text(
+                'Versione 1.0.0 (anno 2023)',
+                style: TextStyle(fontSize: 20),
+              ),
             ),
           ),
           Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                  'Ideato e realizzato da Francesco Costa, Riccando Perron Cabus e Prof. Gianluca Cisana'),
+                'Ideato e realizzato da Francesco Costa, Riccando Perron Cabus e Prof. Gianluca Cisana',
+                style: TextStyle(fontSize: 20),
+              ),
             ),
           ),
           Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text('Liceo Scientifico B. Pascal - Busto Arsizio'),
+              child: Text(
+                'Liceo Scientifico B. Pascal - Busto Arsizio',
+                style: TextStyle(fontSize: 20),
+              ),
             ),
           ),
+          // Center(child: Padding(
+          //   padding: ,
+          //   child: ,
+          // ),)
         ],
       ),
     );
