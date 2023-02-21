@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutPage extends StatelessWidget {
-  const AboutPage({Key? key}) : super(key: key);
+  AboutPage({Key? key}) : super(key: key);
+
+  final Uri _url = Uri.parse('https://forms.gle/r6c2nTweAX1FcL5b9');
+
+  Future<void> _launchUrl() async {
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,10 +56,15 @@ class AboutPage extends StatelessWidget {
               ),
             ),
           ),
-          // Center(child: Padding(
-          //   padding: ,
-          //   child: ,
-          // ),)
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: _launchUrl,
+                child: Text('Commenta per aiutarci a migliorare l\'app!'),
+              ),
+            ),
+          )
         ],
       ),
     );

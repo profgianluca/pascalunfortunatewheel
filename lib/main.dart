@@ -31,7 +31,7 @@ void main() {
       '/': (context) => const HomePage(),
       '/NewWheelScreen': (context) => const NewWheelScreen(),
       '/WheelScreen': (context) => const Wheel(),
-      '/AboutPage': (context) => const AboutPage(),
+      '/AboutPage': (context) => AboutPage(),
     },
   ));
 }
