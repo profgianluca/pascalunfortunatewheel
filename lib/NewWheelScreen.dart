@@ -130,13 +130,13 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
                                 'Giovanni',
                                 'Andrea',
                                 'Carlo',
-                                'Tommaso',
+                                'Tommaso P.',
                                 'Alessandro P.',
                                 'Alessandro R.',
                                 'Maria',
                                 'Marco',
                                 'Edoardo',
-                                'Tommaso'
+                                'Tommaso Z.'
                               ];
                               break;
                             case '#pascal2a#':
