@@ -111,7 +111,7 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
                           listaRuote[progressivoRuote] = nomeruota;
                           salvaListaRuote();
                           switch (nomeruota) {
-                            case '#pascal1a#':
+                            case '#pascal2a#':
                               listastudenti = [
                                 'Alessandro A.',
                                 'Mateos',
@@ -128,7 +128,6 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
                                 'Marta',
                                 'Nausicaa',
                                 'Giovanni',
-                                'Andrea',
                                 'Carlo',
                                 'Tommaso P.',
                                 'Alessandro P.',
@@ -139,11 +138,12 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
                                 'Tommaso Z.'
                               ];
                               break;
-                            case '#pascal2a#':
+                            case '#pascal3a#':
                               listastudenti = [
                                 'Leonardo',
                                 'Diana',
                                 'Sofia B.',
+                                'Greta',
                                 'Gabriele',
                                 'Caterina',
                                 'Emma',
@@ -154,15 +154,17 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
                                 'Maddalena',
                                 'Giulio',
                                 'Cecilia',
-                                'Anna',
+                                'Giorgia',
+                                'Vittoria',
                                 'Giovanni',
                                 'Sofia T.',
                                 'Sofia U.'
                               ];
                               break;
-                            case '#pascal3a#':
+                            case '#pascal4a#':
                               listastudenti = [
                                 'Matteo B.',
+                                'Anna B',
                                 'Sofia',
                                 'Francesca',
                                 'Linda',
@@ -178,64 +180,61 @@ class _NewWheelScreenState extends State<NewWheelScreen> {
                                 'Matteo I.',
                                 'Francesco',
                                 'Madhuri',
-                                'Ana',
                                 'Pietro P.',
-                                'Anna',
+                                'Anna R.',
                                 'Tommaso',
                                 'Alessia',
                                 'Andres',
                                 'Gaia',
                                 'Simone',
-                                'elisa',
+                                'Elisa',
                                 'Giosuè'
                               ];
                               break;
-                            case '#pascal4a#':
+                            case '#pascal5a#':
                               listastudenti = [
+                                'Tommaso A.',
                                 'Sofia',
-                                'Tommaso',
+                                'Tommaso B.',
                                 'Giorgio',
                                 'Camilla',
                                 'Vincenzo',
                                 'Giacomo C.',
                                 'Massimo',
                                 'Francesco :)',
+                                'Margherita',
                                 'Elisa',
-                                'Riccardo L.',
                                 'Samuele',
                                 'Rachele',
                                 'Filippo',
-                                'Riccardo P. :)',
+                                'Riccardo :)',
                                 'Edoardo',
                                 'Giacomo P.',
+                                'Pietro',
                                 'Carolina',
                                 'Ludovica',
                                 'Elena',
-                                'Letizia',
-                                'Adam'
+                                'Letizia'
                               ];
                               break;
-                            case '#pascal5a#':
+                            case '#pascal1a#':
                               listastudenti = [
-                                'Luca',
-                                'Chiara',
-                                'Ludovico',
-                                'Emanuele',
-                                'Agnese',
-                                'Ludovica',
-                                'Filippo',
-                                'Alberto',
-                                'Elisabetta',
-                                'Valerii',
-                                'Juan',
-                                'Pietro',
                                 'Sofia',
-                                'Federico',
-                                'Francesco',
-                                'Beatrice',
-                                'Emma',
-                                'Mattia',
-                                'Alex'
+                                'Sara',
+                                'Matteo',
+                                'Mariagrazia',
+                                'Emanuele',
+                                'Letizia',
+                                'Greta',
+                                'Anna',
+                                'Elisa L.',
+                                'Riccardo',
+                                'Alessio',
+                                'Elisa N.',
+                                'Gregorio',
+                                'Filippo',
+                                'Gioele',
+                                'Hammad'
                               ];
                               break;
                           }
